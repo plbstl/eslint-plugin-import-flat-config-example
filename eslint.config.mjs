@@ -1,8 +1,17 @@
-import globals from "globals";
-import pluginJs from "@eslint/js";
-
+import importPlugin from 'eslint-plugin-import';
 
 export default [
-  {languageOptions: { globals: globals.browser }},
-  pluginJs.configs.recommended,
+  importPlugin.flatConfigs.recommended,
+  {
+    files: ['**/*.{js,mjs,cjs}'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+    },
+    rules: {
+      'no-unused-vars': 'off',
+      'import/no-dynamic-require': 'warn',
+      'import/no-nodejs-modules': 'warn',
+    },
+  },
 ];
