@@ -2,9 +2,14 @@
   "name": "eslint-plugin-import-flat-config-example",
   "version": "0.1.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "Paul Ebose",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^9.9.1",
+    "eslint": "^9.9.1",
+    "globals": "^15.9.0"
+  }
 }
