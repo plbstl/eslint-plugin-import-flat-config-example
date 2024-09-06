@@ -1,17 +1,22 @@
-import importPlugin from 'eslint-plugin-import';
+import importPlugin from "eslint-plugin-import";
+import { fixupPluginRules } from '@eslint/compat';
 
 export default [
-  importPlugin.flatConfigs.recommended,
   {
-    files: ['**/*.{js,mjs,cjs}'],
     languageOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'module',
+      parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+      },
     },
-    rules: {
-      'no-unused-vars': 'off',
-      'import/no-dynamic-require': 'warn',
-      'import/no-nodejs-modules': 'warn',
+    plugins: {
+      import: fixupPluginRules(importPlugin),
     },
+    settings: {
+      'import/parsers': {
+        espree: ['.js', '.cjs', '.mjs', '.jsx'],
+      },
+    },
+    rules: importPlugin.configs['recommended'].rules,
   },
-];
+]
